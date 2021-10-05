@@ -19,8 +19,12 @@ function getRandomNumber(max) {
 //-------------------------------END-------------------------------------------------
 
 
-let studentsOnline = ['Virginia', 'Veka',/* 'Ale',*/ 'Yohe', 'Alexander', 'Diego'];
-let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
+//let studentsOnline = ['Virginia', 'Veka',/* 'Ale',*/ 'Yohe', 'Alexander', 'Diego'];
+//let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
+
+let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
+let studentsPresencial = ['Lucy', 'Liset', 'Álvaro', 'Pedro Matas', 'Pedro', 'Milagros', 'Diego', 'Haxel', 'Martin'];
+
 
 const membersInput = document.getElementById('members_selection');
 const mixedGroups = document.getElementById('mix-choice');
