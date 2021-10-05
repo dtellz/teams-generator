@@ -23,7 +23,7 @@ function getRandomNumber(max) {
 //let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
 
 let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
-let studentsPresencial = ['Lucy', 'Liset', 'Álvaro', 'Pedro Matas', 'Pedro', 'Milagros', 'Diego', 'Haxel', 'Martin'];
+let studentsPresencial = ['Luci', 'Lísel', 'Álvaro', 'Pedro M', 'Pedro A', 'Milagros', 'Diego', 'Axel', 'Martín'];
 
 
 const membersInput = document.getElementById('members_selection');
@@ -58,9 +58,30 @@ const btn = document.getElementById('btn_group_make');
 btn.addEventListener('click', function () {
     showLotteryAnimation();
     makeGroupsLottery(MEMBERS, MIXED);
+    // checkLonelyPlayers();
 })
 //-------------------------------------END--------------------------------------
-
+// function checkLonelyPlayers() {
+//     console.log('it works')
+//     groups.length > 0 ? groups.forEach(e => {
+//         if (e.length === 1) {
+//             groups[groups.length - 2].push(e[0]);
+//             groups.pop();
+//         }
+//     }) : groupOnline.length > 0 ? groupOnline.forEach(e => {
+//         if (e.length === 1) {
+//             groupOnline[groupOnline.length - 2].push(e[0]);
+//             groupOnline.pop();
+//         }
+//     }) : groupPresencial.length > 0 ? groupPresencial.forEach(e => {
+//         console.log('its outside')
+//         if (e.length === 1) {
+//             console.log('it entered')
+//             groupPresencial[groupPresencial.length - 2].push(e[0]);
+//             groupPresencial.pop();
+//         }
+//     }) : console.log('All settled.');
+// }
 //------------------------LOTTERY ANIMATION SHOW-------------------------------
 function showLotteryAnimation() {
     //lets hide main screen for now
@@ -180,6 +201,9 @@ function makeGroupsLottery(members, mixed) {
 
     let numberOfGroups = Math.ceil((studentsOnline.length + studentsPresencial.length) / members);
 
+    console.log('NUMBER OF GROUPS: ' + numberOfGroups)
+
+
 
     if (mixed === true) {
 
@@ -197,14 +221,24 @@ function makeGroupsLottery(members, mixed) {
 
             }
         }
+        groups.length > 0 ? groups.forEach(e => {
+            if (e.length === 1) {
+                groups[groups.length - 2].push(e[0]);
+                groups.pop();
+            }
+        }
+        ) : console.log('paired groups');
         //console.log(groups); //------------HERE WE HAVE TO CALL TO GROUPS SCREEN MAKER
     } else {
 
         let studentsArray_online = studentsOnline.map(e => e);
         let studentsArray_presencial = studentsPresencial.map(e => e);
 
+        let onlineNumberOfGroups = studentsArray_online.length / members;
+        let presentialNumberOfGroups = numberOfGroups - onlineNumberOfGroups;
 
-        for (let i = 0; i < numberOfGroups / 2; i++) {
+
+        for (let i = 0; i < onlineNumberOfGroups; i++) {
             groupOnline[i] = [];
             for (let j = 0; j < members; j++) {
                 if (studentsArray_online.length > 0) {
@@ -214,7 +248,14 @@ function makeGroupsLottery(members, mixed) {
                 }
             }
         }
-        for (let i = 0; i < numberOfGroups / 2; i++) {
+        groupOnline.length > 0 ? groupOnline.forEach(e => {
+            if (e.length === 1) {
+                groupOnline[groupOnline.length - 2].push(e[0]);
+                groupOnline.pop();
+            }
+        }) : console.log('Online group paired');
+
+        for (let i = 0; i < presentialNumberOfGroups; i++) {
             groupPresencial[i] = [];
             for (let j = 0; j < members; j++) {
                 if (studentsArray_presencial.length > 0) {
@@ -224,9 +265,16 @@ function makeGroupsLottery(members, mixed) {
                 }
             }
         }
-        //console.log(groupOnline);//------------HERE WE HAVE TO CALL TO GROUPS SCREEN MAKER
-        //console.log(groupPresencial);
+        groupPresencial.length > 0 ? groupPresencial.forEach(e => {
+            console.log('its outside')
+            if (e.length === 1) {
+                console.log('it entered')
+                groupPresencial[groupPresencial.length - 2].push(e[0]);
+                groupPresencial.pop();
+            }
+        }) : console.log('Presential group settled.');
     }
+
 }
 //-------------------------------------END--------------------------------------
 
