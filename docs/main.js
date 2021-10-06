@@ -265,6 +265,7 @@ function makeGroupsLottery(members, mixed) {
                 }
             }
         }
+        //This checks if there is a team with a single member to reorganize
         groupPresencial.length > 0 ? groupPresencial.forEach(e => {
             console.log('its outside')
             if (e.length === 1) {
@@ -276,5 +277,7 @@ function makeGroupsLottery(members, mixed) {
     }
 
 }
+
+
 //-------------------------------------END--------------------------------------
 
