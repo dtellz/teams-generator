@@ -22,32 +22,39 @@ function getRandomNumber(max) {
 //let studentsOnline = ['Virginia', 'Veka',/* 'Ale',*/ 'Yohe', 'Alexander', 'Diego'];
 //let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
 
-let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
-let studentsPresencial = ['Luci', 'Lísel', 'Álvaro', 'Pedro M', 'Pedro A', 'Diego', 'Axel', 'Martín'];
+let bomboA = ['Álvaro', 'Diego', 'Pedro A', 'Martin']
+let bomboB = ['Pedro M', 'Axel', 'Manu', 'Ale']
+let bomboC = ['Elena', 'Lísel', 'Luci', 'Nilton']
+
+// let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
+// let studentsPresencial = ['Luci', 'Lísel', 'Álvaro', 'Pedro M', 'Pedro A', 'Diego', 'Axel', 'Martín'];
 
 
 const membersInput = document.getElementById('members_selection');
-const mixedGroups = document.getElementById('mix-choice');
+// const mixedGroups = document.getElementById('mix-choice');
 
-let MEMBERS = 2;
-let MIXED = false;
+let MEMBERS = 3;
+let MIXED = true;
 
 //WE HEAR FOR CHANGES ON NUMBER OF MEMBERS INPUT
-membersInput.addEventListener('change', function () {
-    MEMBERS = membersInput.value;
-});
+// membersInput.addEventListener('change', function () {
+//     MEMBERS = membersInput.value;
+// });
 //WE HEAR FOR CHANGES ON GROUPS INPUT
-mixedGroups.addEventListener('change', function () {
-    console.log('its here');
-    console.log(MIXED);
-    console.log(getRandomNumber());
-    if (MIXED === false) {
-        MIXED = true;
-    } else {
-        MIXED = false;
-    }
 
-});
+//Uncomment for unmixed teams feature
+
+// mixedGroups.addEventListener('change', function () {
+//     console.log('its here');
+//     console.log(MIXED);
+//     console.log(getRandomNumber());
+//     if (MIXED === false) {
+//         MIXED = true;
+//     } else {
+//         MIXED = false;
+//     }
+
+// });
 
 
 console.log(membersInput);
@@ -142,52 +149,58 @@ function showGroupResults() {
 
 
         });
-    } else {
-        groupOnline.forEach(e => {
-            const cardContainer = document.createElement('div');
-            cardContainer.classList.add('card__container');
-
-            groupTitle = document.createElement('p');
-            groupTitle.classList.add('tittle__block');
-            groupTitle.textContent = `ONLINE GROUP ${groupNumber}`;
-            groupNumber++;
-            cardContainer.appendChild(groupTitle);
-            e.forEach(a => {
-
-                console.log(a);
-                nameHolder = document.createElement('p');
-                nameHolder.classList.add('text__block');
-                nameHolder.textContent = '⭐️ ' + a + ' ⭐️';
-                cardContainer.appendChild(nameHolder);
-                groupsScreen.appendChild(cardContainer);
-                document.body.appendChild(groupsScreen);
-            })
-
-        });
-        groupNumber = 1;
-        groupPresencial.forEach(e => {
-            const cardContainer = document.createElement('div');
-            cardContainer.classList.add('card__container');
-
-            groupTitle = document.createElement('p');
-            groupTitle.classList.add('tittle__block');
-            groupTitle.textContent = `GROUP ${groupNumber}`;
-            groupNumber++;
-            cardContainer.appendChild(groupTitle);
-            e.forEach(a => {
-
-                console.log(a);
-                nameHolder = document.createElement('p');
-                nameHolder.classList.add('text__block');
-                nameHolder.textContent = '⭐️ ' + a + ' ⭐️';
-                cardContainer.appendChild(nameHolder);
-                groupsScreen.appendChild(cardContainer);
-                document.body.appendChild(groupsScreen);
-            })
-
-        });
-
     }
+
+    // ---------uncomment for unmixed teams-------------------
+
+    // else {
+    //     groupOnline.forEach(e => {
+    //         const cardContainer = document.createElement('div');
+    //         cardContainer.classList.add('card__container');
+
+    //         groupTitle = document.createElement('p');
+    //         groupTitle.classList.add('tittle__block');
+    //         groupTitle.textContent = `ONLINE GROUP ${groupNumber}`;
+    //         groupNumber++;
+    //         cardContainer.appendChild(groupTitle);
+    //         e.forEach(a => {
+
+    //             console.log(a);
+    //             nameHolder = document.createElement('p');
+    //             nameHolder.classList.add('text__block');
+    //             nameHolder.textContent = '⭐️ ' + a + ' ⭐️';
+    //             cardContainer.appendChild(nameHolder);
+    //             groupsScreen.appendChild(cardContainer);
+    //             document.body.appendChild(groupsScreen);
+    //         })
+
+    //     });
+    //     groupNumber = 1;
+    //     groupPresencial.forEach(e => {
+    //         const cardContainer = document.createElement('div');
+    //         cardContainer.classList.add('card__container');
+
+    //         groupTitle = document.createElement('p');
+    //         groupTitle.classList.add('tittle__block');
+    //         groupTitle.textContent = `GROUP ${groupNumber}`;
+    //         groupNumber++;
+    //         cardContainer.appendChild(groupTitle);
+    //         e.forEach(a => {
+
+    //             console.log(a);
+    //             nameHolder = document.createElement('p');
+    //             nameHolder.classList.add('text__block');
+    //             nameHolder.textContent = '⭐️ ' + a + ' ⭐️';
+    //             cardContainer.appendChild(nameHolder);
+    //             groupsScreen.appendChild(cardContainer);
+    //             document.body.appendChild(groupsScreen);
+    //         })
+
+    //     });
+
+    // }
+
+    // ---------uncomment for unmixed teams-------------------
 
 }
 //--------------------------------END-----------------------------------
@@ -199,83 +212,119 @@ function playChampionsLeagueAudio() {
 //------------------------------RANDOM GROUPS GENERATOR--------------------------------
 function makeGroupsLottery(members, mixed) {
 
-    let numberOfGroups = Math.ceil((studentsOnline.length + studentsPresencial.length) / members);
 
+    // let numberOfGroups = Math.ceil((bomboA.length + bomboB.length + bomboC.length) / members);
+    let numberOfGroups = 4;
     console.log('NUMBER OF GROUPS: ' + numberOfGroups)
 
-
+    let group1 = bomboA.map(e => e);
+    let group2 = bomboB.map(e => e);
+    let group3 = bomboC.map(e => e);
 
     if (mixed === true) {
 
-
-        let studentsArray = studentsOnline.map(e => e);
-        studentsArray = studentsArray.concat(studentsPresencial);
         for (let i = 0; i < numberOfGroups; i++) {
             groups[i] = [];
-            for (let j = 0; j < members; j++) {
-                if (studentsArray.length > 0) {
-                    let memberIndex = getRandomNumber(studentsArray.length - 1);
-                    groups[i].push(studentsArray[memberIndex]);
-                    studentsArray.splice(memberIndex, 1);
-                }
+            // for (let j = 0; j < 1; j++) {
+            if (group1.length > 0) {
+                let memberIndexA = getRandomNumber(group1.length - 1);
+                groups[i].push(group1[memberIndexA]);
+                group1.splice(memberIndexA, 1);
+            }
+            if (group2.length > 0) {
+                let memberIndexB = getRandomNumber(group2.length - 1);
+                groups[i].push(group2[memberIndexB]);
+                group2.splice(memberIndexB, 1);
+            }
+            if (group3.length > 0) {
+                let memberIndexC = getRandomNumber(group3.length - 1);
+                groups[i].push(group3[memberIndexC]);
+                group3.splice(memberIndexC, 1);
 
             }
+
+            // }
         }
-        groups.length > 0 ? groups.forEach(e => {
-            if (e.length === 1) {
-                groups[groups.length - 2].push(e[0]);
-                groups.pop();
-            }
-        }
-        ) : console.log('paired groups');
+
+        // ---------uncomment for unmixed teams-------------------
+
+        // let studentsArray = studentsOnline.map(e => e);
+        // studentsArray = studentsArray.concat(studentsPresencial);
+        // for (let i = 0; i < numberOfGroups; i++) {
+        //     groups[i] = [];
+        //     for (let j = 0; j < members; j++) {
+        //         if (studentsArray.length > 0) {
+        //             let memberIndex = getRandomNumber(studentsArray.length - 1);
+        //             groups[i].push(studentsArray[memberIndex]);
+        //             studentsArray.splice(memberIndex, 1);
+        //         }
+
+        //     }
+        // }
+        // groups.length > 0 ? groups.forEach(e => {
+        //     if (e.length === 1) {
+        //         groups[groups.length - 2].push(e[0]);
+        //         groups.pop();
+        //     }
+        // }
+        // ) : console.log('paired groups');
         //console.log(groups); //------------HERE WE HAVE TO CALL TO GROUPS SCREEN MAKER
-    } else {
-
-        let studentsArray_online = studentsOnline.map(e => e);
-        let studentsArray_presencial = studentsPresencial.map(e => e);
-
-        let onlineNumberOfGroups = studentsArray_online.length / members;
-        let presentialNumberOfGroups = numberOfGroups - onlineNumberOfGroups;
-
-
-        for (let i = 0; i < onlineNumberOfGroups; i++) {
-            groupOnline[i] = [];
-            for (let j = 0; j < members; j++) {
-                if (studentsArray_online.length > 0) {
-                    let memberIndex = getRandomNumber(studentsArray_online.length - 1);
-                    groupOnline[i].push(studentsArray_online[memberIndex]);
-                    studentsArray_online.splice(memberIndex, 1);
-                }
-            }
-        }
-        groupOnline.length > 0 ? groupOnline.forEach(e => {
-            if (e.length === 1) {
-                groupOnline[groupOnline.length - 2].push(e[0]);
-                groupOnline.pop();
-            }
-        }) : console.log('Online group paired');
-
-        for (let i = 0; i < presentialNumberOfGroups; i++) {
-            groupPresencial[i] = [];
-            for (let j = 0; j < members; j++) {
-                if (studentsArray_presencial.length > 0) {
-                    let memberIndex = getRandomNumber(studentsArray_presencial.length - 1);
-                    groupPresencial[i].push(studentsArray_presencial[memberIndex]);
-                    studentsArray_presencial.splice(memberIndex, 1);
-                }
-            }
-        }
-        //This checks if there is a team with a single member to reorganize
-        groupPresencial.length > 0 ? groupPresencial.forEach(e => {
-            console.log('its outside')
-            if (e.length === 1) {
-                console.log('it entered')
-                groupPresencial[groupPresencial.length - 2].push(e[0]);
-                groupPresencial.pop();
-            }
-        }) : console.log('Presential group settled.');
     }
 
+    // ---------uncomment for unmixed teams-------------------
+
+
+
+    // else {
+
+    //     let studentsArray_online = studentsOnline.map(e => e);
+    //     let studentsArray_presencial = studentsPresencial.map(e => e);
+
+    //     let onlineNumberOfGroups = studentsArray_online.length / members;
+    //     let presentialNumberOfGroups = numberOfGroups - onlineNumberOfGroups;
+
+
+    //     for (let i = 0; i < onlineNumberOfGroups; i++) {
+    //         groupOnline[i] = [];
+    //         for (let j = 0; j < members; j++) {
+    //             if (studentsArray_online.length > 0) {
+    //                 let memberIndex = getRandomNumber(studentsArray_online.length - 1);
+    //                 groupOnline[i].push(studentsArray_online[memberIndex]);
+    //                 studentsArray_online.splice(memberIndex, 1);
+    //             }
+    //         }
+    //     }
+    //     groupOnline.length > 0 ? groupOnline.forEach(e => {
+    //         if (e.length === 1) {
+    //             groupOnline[groupOnline.length - 2].push(e[0]);
+    //             groupOnline.pop();
+    //         }
+    //     }) : console.log('Online group paired');
+
+    //     for (let i = 0; i < presentialNumberOfGroups; i++) {
+    //         groupPresencial[i] = [];
+    //         for (let j = 0; j < members; j++) {
+    //             if (studentsArray_presencial.length > 0) {
+    //                 let memberIndex = getRandomNumber(studentsArray_presencial.length - 1);
+    //                 groupPresencial[i].push(studentsArray_presencial[memberIndex]);
+    //                 studentsArray_presencial.splice(memberIndex, 1);
+    //             }
+    //         }
+    //     }
+    //     //This checks if there is a team with a single member to reorganize
+    //     groupPresencial.length > 0 ? groupPresencial.forEach(e => {
+    //         console.log('its outside')
+    //         if (e.length === 1) {
+    //             console.log('it entered')
+    //             groupPresencial[groupPresencial.length - 2].push(e[0]);
+    //             groupPresencial.pop();
+    //         }
+    //     }) : console.log('Presential group settled.');
+    // }
+
+
+
+    // ********---------uncomment for unmixed teams-------------------
 }
 
 
