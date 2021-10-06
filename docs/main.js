@@ -23,7 +23,7 @@ function getRandomNumber(max) {
 //let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
 
 let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
-let studentsPresencial = ['Luci', 'Lísel', 'Álvaro', 'Pedro M', 'Pedro A', 'Milagros', 'Diego', 'Axel', 'Martín'];
+let studentsPresencial = ['Luci', 'Lísel', 'Álvaro', 'Pedro M', 'Pedro A', 'Diego', 'Axel', 'Martín'];
 
 
 const membersInput = document.getElementById('members_selection');
