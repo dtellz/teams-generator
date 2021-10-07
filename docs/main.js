@@ -22,8 +22,8 @@ function getRandomNumber(max) {
 //let studentsOnline = ['Virginia', 'Veka',/* 'Ale',*/ 'Yohe', 'Alexander', 'Diego'];
 //let studentsPresencial = ['Marta', 'Paloma', 'Jean', 'Jorge', 'Matias', 'Jose'];
 
-let bomboA = ['Álvaro', 'Diego', 'Pedro A', 'Martin']
-let bomboB = ['Pedro M', 'Axel', 'Manu', 'Ale']
+let bomboA = ['Álvaro', 'Diego', 'Pedro M', 'Martin']
+let bomboB = ['Pedro A', 'Axel', 'Manu', 'Ale']
 let bomboC = ['Elena', 'Lísel', 'Luci', 'Nilton']
 
 // let studentsOnline = ['Ale', 'Manu',/* 'Ale',*/ 'Nilton', 'Elena'];
